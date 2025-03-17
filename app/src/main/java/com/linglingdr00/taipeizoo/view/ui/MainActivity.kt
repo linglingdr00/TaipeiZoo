@@ -1,5 +1,6 @@
 package com.linglingdr00.taipeizoo.view.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -50,13 +51,15 @@ class MainActivity : AppCompatActivity() {
         networkState = NetworkState(this)
         networkState.observe(this) {
             if (it) {
-                // 顯示 progress bar
-                binding.mainProgressBar.visibility = View.VISIBLE
                 // 抓取資料
                 mainViewModel.getAllData()
+                // 顯示 progress bar
+                binding.mainProgressBar.visibility = View.VISIBLE
             } else {
                 // 隱藏 progress bar
                 binding.mainProgressBar.visibility = View.GONE
+                // 顯示沒有網路提示
+                setNetworkErrorDialog().show()
             }
         }
 
@@ -73,5 +76,18 @@ class MainActivity : AppCompatActivity() {
             areaAdapter.submitList(it)
         }
 
+    }
+
+    /** 設定網路錯誤的 dialog */
+    fun setNetworkErrorDialog(): AlertDialog {
+        val builder = AlertDialog.Builder(this)
+            .setMessage(resources.getString(R.string.error_network))
+        val dialog = builder.create()
+        // 設定點擊外部區域或返回鍵不會關閉 dialog
+        dialog.setCancelable(false)
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK") { _, _ ->
+            dialog?.dismiss()
+        }
+        return dialog
     }
 }

@@ -54,9 +54,9 @@ class MainViewModel @Inject constructor(
         Log.d(TAG, "getAllData()")
         viewModelScope.launch {
             // 使用 async 啟動並行任務
-            val areaDeferred = async { getAreaItems() }
-            val plantDeferred = async { getPlantItems() }
-            val animalDeferred = async { getAnimalItems() }
+            val areaDeferred = async { getAreaItemData() }
+            val plantDeferred = async { getPlantData() }
+            val animalDeferred = async { getAnimalData() }
 
             // 等待所有任務完成
             areaDeferred.await()
@@ -69,7 +69,7 @@ class MainViewModel @Inject constructor(
     }
 
     /** 取得館區資料 */
-    fun getAreaItems() {
+    fun getAreaItemData() {
         viewModelScope.launch {
             try {
                 val areaItems = mainRepository.getAreaItems()
@@ -83,7 +83,7 @@ class MainViewModel @Inject constructor(
     }
 
     /** 取得植物資料 */
-    fun getPlantItems() {
+    fun getPlantData() {
         viewModelScope.launch {
             try {
                 val plantItems = mainRepository.getPlantItems()
@@ -95,7 +95,7 @@ class MainViewModel @Inject constructor(
     }
 
     /** 取得動物資料 */
-    fun getAnimalItems() {
+    fun getAnimalData() {
         viewModelScope.launch {
             try {
                 val animalItems = mainRepository.getAnimalItems()

@@ -102,11 +102,13 @@ class AreaDetailFragment(
 
         // 觀察 animalItems，當資料改變時更新 adapter
         mainViewModel.animalItems.observe(viewLifecycleOwner) {
+            binding.animalListLayout.visibility = if (it.isEmpty()) View.GONE else View.VISIBLE
             animalAdapter.submitList(it)
         }
 
         // 觀察 plantItems，當資料改變時更新 adapter
         mainViewModel.plantItems.observe(viewLifecycleOwner) {
+            binding.plantListLayout.visibility = if (it.isEmpty()) View.GONE else View.VISIBLE
             plantAdapter.submitList(it)
         }
 
