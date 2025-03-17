@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.ui.AreaDetailFragment">
+
+    <data>
+        <variable
+            name="areaItem"
+            type="com.linglingdr00.taipeizoo.model.data.item.AreaItem" />
+
+        <variable
+            name="mainViewModel"
+            type="com.linglingdr00.taipeizoo.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/area_detail_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/area_detail_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/area_detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="@{areaItem.EName}"
+                tools:title="台灣動物區"
+                app:navigationIcon="@drawable/ic_arrow_back"
+                app:menu="@menu/area_detail_top_app_bar"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:layout_scrollEffect="compress" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="8dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp">
+
+                    <ImageView
+                        android:id="@+id/area_detail_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        imageUrl="@{areaItem.EPicUrl}"
+                        android:scaleType="centerCrop"
+                        android:background="@color/gray" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/area_detail_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    paragraphText="@{areaItem.EInfo}"
+                    tools:text="兩棲爬蟲動物館位於本園的鳥園區與溫帶動物區之間，波浪狀的屋頂模擬蜿蜒的蛇區造型，結合銀灰金屬色調，是一座相當具有現代藝術風格的展示館。 本館包含世界動物區、臺灣兩棲爬蟲動物區與教育解說廊道3個展示區塊，分別展示介紹世界各地與臺灣土地上的兩棲、爬蟲動物，教育解說廊道則介紹兩棲、爬蟲動物的生態與面臨困境。館內還有兩棲爬蟲教室提供相關課程及定期的Keeper's Talk教育解說活動，希望藉由各類動物、寫實模型、互動教材與文化藝品的多元展示，引導遊客進入兩棲爬蟲動物的奧秘世界。"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="4dp" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:id="@+id/animal_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/animal_list"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="4dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/animal_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="horizontal"
+                        tools:listitem="@layout/list_animal_item" />
+
+                    <ProgressBar
+                        android:id="@+id/animal_progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        progressBarStatus="@{mainViewModel.loadAnimalDataStatus}"
+                        android:layout_gravity="center" />
+
+                </FrameLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:id="@+id/plant_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plant_list"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="4dp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/plant_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="horizontal"
+                        tools:listitem="@layout/list_plant_item" />
+
+                    <ProgressBar
+                        android:id="@+id/plant_progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        progressBarStatus="@{mainViewModel.loadPlantDataStatus}"
+                        android:layout_gravity="center" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

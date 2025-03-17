@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TaipeiZoo" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorSecondary">@color/gray</item>
+        <item name="colorSecondaryContainer">@color/light_gray</item>
+    </style>
+
+    <style name="Theme.TaipeiZoo" parent="Base.Theme.TaipeiZoo" />
+
+    <!-- fullscreen dialog -->
+    <style name="Custom.Dialog.Fullscreen" parent="Base.Theme.TaipeiZoo">
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/LeftAndRightAnimation</item>
+    </style>
+
+    <!-- left to right animation -->
+    <style name="LeftAndRightAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_left_to_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_right_to_left</item>
+    </style>
+
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="black_10">#1A000000</color> <!-- alpha 10% -->
+    <color name="black_50">#80000000</color> <!-- alpha 50% -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#FFC6C6C6</color>
+    <color name="deep_gray">#FFAEB0B3</color>
+    <color name="light_gray">#FFD8D8D8</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+</resources>
