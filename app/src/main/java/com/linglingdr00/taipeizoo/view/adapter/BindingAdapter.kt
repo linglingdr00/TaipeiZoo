@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import coil.load
+import com.google.android.material.chip.Chip
 import com.linglingdr00.taipeizoo.R
 
 @BindingAdapter("imageUrl")
@@ -33,4 +34,10 @@ fun bindProgressBar(progressBar: ProgressBar, status: Boolean) {
 fun bindParagraph(textView: TextView, text: String) {
     // 使用正則表達式將三個或更多的連續換行符替換為兩個換行符
     textView.text = text.replace(Regex("([\\r\\n])\\1{2,}"), "\n\n").trim()
+}
+
+@BindingAdapter("conservationText")
+fun bindConservation(chip: Chip, text: String) {
+    chip.text = text
+    chip.visibility = if (text.isNotEmpty()) View.VISIBLE else View.GONE
 }

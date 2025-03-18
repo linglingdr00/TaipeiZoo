@@ -13,9 +13,11 @@ Image: Coil
 + 館區
 <img src="https://i.imgur.com/IvNPHwi.png" width="40%">
 
-+ 管區詳細資料（可查看該區的動物、植物列表，點擊右上角 icon 可開啟網頁）
-<img src="https://i.imgur.com/K8gQ1lo.png" width="40%">
-<img src="https://i.imgur.com/E2b0IXJ.png" width="40%">
++ 管區詳細資料
+  + 可查看該區的動物、植物列表
+  + 點擊右上角 icon 可開啟網頁
+  <img src="https://i.imgur.com/K8gQ1lo.png" width="40%">
+  <img src="https://i.imgur.com/E2b0IXJ.png" width="40%">
 
 + 動物詳細資料
   + Image List 使用 Material3 Carousel
